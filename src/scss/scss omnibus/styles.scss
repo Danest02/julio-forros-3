@@ -1,0 +1,20 @@
+@import "bases/breakpoints";
+@import "bases/variables";
+@import "bases/style-guide";
+@import "bases/normalize";
+@import "bases/my-styles";
+@import "bases/mixins-and-extends";
+@import "bases/general-styles";
+@import "bases/keyframes";
+/*  */
+// @import "blocks/top-header";
+// @import "blocks/navbar-header";
+// @import "blocks/contact-button";
+// @import "blocks/sliders";
+// @import "blocks/footer";
+
+@import "bases/modifiers.scss";
+
+// npm install -g sass-migrator
+// sass-migrator division **/*.scs
+

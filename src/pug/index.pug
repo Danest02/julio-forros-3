@@ -1,0 +1,134 @@
+extends ./templates/template.pug
+block head
+    //- link(rel="stylesheet" type="text/css" href="https://unpkg.com/swiper@7/swiper-bundle.min.css")
+block header
+
+
+
+block main
+    section.logo.section.container
+        img(class="logo__img" src="./galery/logo/logo.webp" width="220" height="262" alt="logo de Lagos de Pesca El Janeiro")
+        .logo__text
+            h1.logo__tittle.h1 Lagos de Pesca El Janeiro
+            p.logo__p El lugar que estás buscando
+
+
+    section.slider-top-container.container
+        .slider-top.my-slider
+            .slider-top__slides.my-slider__slides
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/1.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/2.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/3.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/4.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/5.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/6.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/7.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+                .slider-top__slide.my-slider__slide
+                    img(src="galery/images/400/8.webp" class="slider-top__slide-img slider-top__slide-img--1" loading="lazy" alt="Zona de comidas")
+            .slider-top.my-slider__navegation.my-slider__navegation--side
+                .slider-top-button.slider-top__navegation-button--back.my-slider__navegation-button.my-slider__navegation-button--back.my-slider__navegation-button--opacity-none
+                .slider-top-button.slider-top__navegation-button--next.my-slider__navegation-button.my-slider__navegation-button--next
+
+    .menu-restaurant#menu-restaurant.container
+        button.menu-restaurant__button#menu-restaurant__button.mybtn Volver
+        .slider-menu.my-slider
+            .slider-menu__slides-container
+                .slider-menu__slides.my-slider__slides
+                    .slider-menu__slide.my-slider__slide
+                        //- .slider-menu__img-container
+                        img(src="galery/images/default/menu1.webp" class="slider-menu__img" data-io-image-menu  alt="carta del menu de comidas")
+                    .slider-menu__slide.my-slider__slide
+                        //- .slider-menu__img-container
+                        img(src="galery/images/default/menu2.webp" class="slider-menu__img" data-io-image-menu  alt="carta del menu de comidas")
+            .slider-menu__navegation.my-slider__navegation.my-slider__navegation--side-small
+                .slider-menu-button.slider-menu__navegation-button--back.my-slider__navegation-button.my-slider__navegation-button--back.my-slider__navegation-button--opacity-none
+                .slider-menu-button.slider-menu__navegation-button--next.my-slider__navegation-button.my-slider__navegation-button--next
+
+    section(data-scroll-spy class="activities section container" id="actividades")
+        h2.h1.tittle.activities__tittle Disfruta de:
+        .activities__cards 
+            .activities__card
+                .activities__card-image-container
+                    picture 
+                        source(type="image/webp" srcset="galery/images/720/restaurante.webp" media="(min-width: 600px)" loading="lazy")
+                        img(src="galery/images/400/restaurante.webp" class="activities__card-image" loading="lazy" alt="Zona de comidas")
+                .activities__card-data
+                    .activities__card-text
+                        h3.h3.activities__card-tittle Restaurante 
+                        p.p.activities__card-p Prueba nuestros deliciosos platos
+                    .activities__card-button-container
+                        button(id="activities__card-button" class="activities__card-button mybtn mybtn--outline") Ver carta
+            .activities__card
+                .activities__card-image-container
+                        source(type="image/webp" srcset="galery/images/720/bar.webp" media="(min-width: 600px)" loading="lazy")
+                        img(src="galery/images/400/bar.webp" class="activities__card-image" loading="lazy" alt="Zona de comidas")
+                .activities__card-data
+                    .activities__card-text
+                        h3.h3.activities__card-tittle Bar
+                        p.p.activities__card-p Brinda en nuestro bar
+            .activities__card
+                .activities__card-image-container
+                    picture
+                        source(type="image/webp" srcset="galery/images/720/pesca.webp" media="(min-width: 600px)" loading="lazy")
+                        img(src="galery/images/400/pesca.webp" class="activities__card-image" loading="lazy" alt="Zona de comidas")
+                .activities__card-data
+                    .activities__card-text
+                        h3.h3.activities__card-tittle Lago de Pesca
+                        p.p.activities__card-p Hasta cinco lagos de pesca
+            .activities__card
+                .activities__card-image-container
+                    picture
+                        source(type="image/webp" srcset="galery/images/720/charco.webp" media="(min-width: 600px)" loading="lazy")
+                        img(src="galery/images/400/charco.webp" class="activities__card-image" loading="lazy" alt="Zona de comidas")
+                .activities__card-data
+                    .activities__card-text
+                        h3.h3.activities__card-tittle Charco de agua natural
+                        p.p.activities__card-p Disfruta de un agradable baño con agua natural
+            .activities__card
+                .activities__card-image-container
+                    picture
+                        source(type="image/webp" srcset="galery/images/720/zona.webp" media="(min-width: 600px)" loading="lazy")
+                        img(src="galery/images/400/zona infantil.webp" class="activities__card-image" loading="lazy" alt="Zona de comidas")
+                .activities__card-data
+                    .activities__card-text
+                        h3.h3.activities__card-tittle Zona Infantil
+                        p.p.activities__card-p Zona de juegos para los niños
+                
+
+    section.print-data.section.container
+        h2.h1.tittle.print-data__tittle Buenas noticias
+        .print-data__card
+            .print-data__text 
+                h3.h2.print-data__tittle-text ¡Son Bienvenidos! 
+                span.h3 todos los integrantes de tu familia
+            .print-data__img-container
+                picture
+                    source(type="image/webp" srcset="./galery/images/720/mascotas.webp" media="(min-width: 600px)")
+                    img(src="./galery/images/400/mascotas.webp" loading="lazy" class="print-data__img" alt="se aceptan mascotas")
+    section(class="location section container" id="ubicacion" data-scroll-spy)
+        h2.h1.tittle Como llegar 
+        .location__content
+            .location__transport 
+                h3.location__transport-tittle.h2 Tenemos servicio de transporte 
+                p.location__transport-p.p Comunicate con nosotros para más información 
+                a(href="https://wa.me/+573157440889" target="blank" class="location__transport-button mybtn") WhatsApp
+            div(data-io-map class="location__map-container")
+                <iframe tittle="mapa ubicación"  class="location__map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d508104.50427177903!2d-76.49175285000004!3d5.7753409!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e464580147ce1a1%3A0x478fbb87a57cdebf!2sLagos%20de%20Pesca%20El%20Janeiro!5e0!3m2!1ses!2sco!4v1656122386175!5m2!1ses!2sco" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" ></iframe>
+                .location__adress-container
+                    address.location__adress Vereda las Mercedes - Bitania Ant
+
+
+
+
+
+
+
+
+

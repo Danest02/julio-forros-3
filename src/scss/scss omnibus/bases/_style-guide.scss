@@ -1,0 +1,148 @@
+// TODO:ANCHOR --- COLORS
+
+.body {
+    // * Primary
+    --color-primary-100: #FEC5B3;
+    --color-primary-200: #FE9E81;
+    --color-primary-300: #FD774E;
+    --color-primary-400: #FD501C;
+    --color-primary-500: #E33702;
+    --color-primary-600: #D43302;
+    --color-primary-700: #C52F02;
+    --color-primary-800: #B62C02;
+    --color-primary-900: #A72802;
+
+
+    --color-primary: var(--color-primary-500);
+    --color-white: #fff;
+    --color-background-primary: #fff;
+    --color-background-secondary: #f2f2f2;
+    --color-icons: var(--color-primary-500);
+    --color--text: #111;
+    --color-search-bar: var(--color-background);
+    --color-footer: var(--color-primary-600)
+}
+
+
+// TODO:ANCHOR --- ICONS
+
+@font-face {
+    font-family: 'material-icons-round';
+    font-style: normal;
+    font-weight: 400;
+    font-display: block;
+    // src: url(https://miweb.com/MaterialIcons-Regular.eot);
+    // /* For IE6-8 */
+    src: local('Material Icons'),
+        local('MaterialIcons-Regular'),
+        url(../galery/fonts/MaterialIconsRound-Regular.otf) format('truetype');
+}
+
+.material-icons-round {
+    font-family: 'material-icons-round';
+    line-height: 1;
+    font-size: 24px;
+    user-select: none;
+}
+
+.pseudo-icon {
+    font-family: "material-icons-round";
+    vertical-align: middle;
+    margin-right: 4px;
+    font-size: 24px;
+    color: inherit;
+}
+
+//  TODO:ANCHOR --- TEXTS
+
+// * Paragraph
+// @font-face {
+//     font-family: arial;
+//     font-display: swap;
+//     src: local('arial');
+//     src: local('OpenSans-Regular'), local('OpenSans Regular'), url(../galery/fonts/OpenSans-Regular.ttf) format('truetype');
+// }
+
+// * Paragraph SemiBold
+// @font-face {
+//     font-family: 'p-semibold';
+//     font-display: swap;
+//     src: local('arial');
+//     // src: local('OpenSans-SemiBold'), local('OpenSans SemiBold'), url(../galery/fonts/OpenSans-SemiBold.ttf) format('truetype');
+//     src: local('OpenSans-Regular'), local('OpenSans Regular'), url(../galery/fonts/OpenSans-Regular.ttf) format('truetype');
+
+// }
+
+// * Tittle
+@font-face {
+    font-family: 'tittle';
+    font-display: swap;
+    src: local('arial');
+    src: local('EBGaramond-BoldItalic'), local('EBGaramond BoldItalic'), url(../galery/fonts/EBGaramond-BoldItalic.ttf) format('truetype');
+}
+
+// * Button
+// @font-face {
+//     font-family:'button';
+//     font-display: swap;
+//     src: local('arial');
+//     src: local('OpenSans-Regular'), local('OpenSans Regular'), url(../galery/fonts/OpenSans-Regular.ttf) format('truetype');
+//     // src: local('OpenSans-SemiBold'), local('OpenSans SemiBold'), url(../galery/fonts/OpenSans-SemiBold.ttf) format('truetype');
+// }
+
+
+//  TODO:ANCHOR --- SPACES
+
+:root {
+    --space-1: 48px;
+    --space-2: 40px;
+    --space-3: 32px;
+    --space-4: 28px;
+    --space-5: 24px;
+    --space-6: 16px;
+    --space-7: 8px;
+
+    // @include min-width(768px) {
+    //     --space-1: 68px;
+    //     --space-2: 56px;
+    //     --space-3: 44px;
+    //     --space-4: 40px;
+    //     --space-5: 36px;
+    //     --space-6: 22px;
+    //     --space-7: 12px;
+    // }
+}
+
+
+//  TODO:ANCHOR --- border radius
+
+.border-radius {
+    border-radius: 8px;
+}
+
+
+//  TODO:ANCHOR --- SHADOWS
+
+.border-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, .25);
+}
+
+.border-shadow-left {
+    box-shadow: -4px 4px 10px rgba(0, 0, 0, .25);
+}
+
+
+//  TODO:ANCHOR --- BORDERS
+
+.border-left {
+    border-left: 4px solid var(--color-neutral-900);
+}
+
+.background-gradient {
+    background-image: linear-gradient(40deg, var(--color-primary-500) 30%, var(--color-primary-400) 75%, var(--color-primary-400));
+    transition: background-image .3s ease-in;
+    &:hover {
+        background-image: linear-gradient(40deg, var(--color-primary-600) 30%, var(--color-primary-400) 75%, var(--color-primary-300));
+
+    }
+}

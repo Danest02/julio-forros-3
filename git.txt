@@ -1,0 +1,11 @@
+
+Primero se debe crear el repositorio en github
+
+git init
+git add .
+git status
+git commit -m "first commit"
+git log --oneline
+git remote add origin https://github.com/nombreDeUsuario/repositorio.git
+git remote -v
+git push -u origin master

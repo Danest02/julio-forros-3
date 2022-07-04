@@ -1,0 +1,92 @@
+$mobile-portrait: 320px - 10px;
+$mobile-landscape: 568px - 10px;
+$tablet: 768px - 10px;
+$tablet-landscape: 1024px - 10px;
+$desktop: 1366px - 80px;
+// $desktop: 1920px - 10px;
+
+// @media (max-height: 500px) and (min-width: 800px)
+// @media (orientation: landscape) and (min-width: 767px)
+ 
+@mixin desktop{
+    @media screen and (min-width: $desktop){
+        @content;
+    }
+}
+@mixin mobile-landscape{
+    @media screen and (min-width: $mobile-landscape){
+        @content;
+    }
+}
+
+@mixin max-width($width){
+    @media screen and (max-width: $width){
+        @content;
+    }
+}
+@mixin max-height($height){
+    @media screen and (max-height: $height){
+        @content;
+    }
+}
+@mixin min-width($min-width){
+    @media screen and (min-width: $min-width){
+        @content;
+    }
+}
+@mixin min-width-landscape($min-width){
+    @media screen and (min-width: $min-width) and (orientation:landscape){
+        @content;
+    }
+}
+@mixin min-width-portrait($min-width){
+    @media screen and (min-width: $min-width) and (orientation:portrait){
+        @content;
+    }
+}
+@mixin max-width-portrait($max-width){
+    @media screen and (max-width: $max-width) and (orientation:portrait){
+        @content;
+    }
+}
+@mixin max-width-landscape($max-width){
+    @media screen and (max-width: $max-width) and (orientation:landscape){
+        @content;
+    }
+}
+@mixin min-height-landscape($min-height){
+    @media screen and (min-height: $min-height) and (orientation:landscape){
+        @content;
+    }
+}
+@mixin max-height-landscape($max-height){
+    @media screen and (max-height: $max-height) and (orientation:landscape){
+        @content;
+    }
+}
+// @mixin min-width-min-heigth($min-width, $min-heigth){
+//     @media screen and (min-width: $min-width) and (min-height:$min-height){
+//         @content;
+//     }
+// }
+@mixin min-height($min-height){
+    @media screen and (min-height: $min-height){
+        @content;
+    }
+}
+@mixin min-height-min-width($height,$width){
+    @media (min-height:$height) and (min-width: $width){
+        @content;
+    }
+}
+@mixin max-height-max-width($height,$width){
+    @media (max-height:$height) and (max-width: $width){
+        @content;
+    }
+}
+@mixin landscape{
+    @media (orientation: landscape){
+        @content
+    }
+
+}
