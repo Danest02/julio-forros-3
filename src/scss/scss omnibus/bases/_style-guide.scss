@@ -41,13 +41,26 @@
     // TODO --- SPECIFIC COLORS
 
     // * Button state 
-    --color-btn-default: var(--color-tertiary-700) --color-btn-hover: var(--color-tertiary-800) --color-btn-pressed: var(--color-tertiary-900) --color-btn-disabled: var(--color-tertiary-400) // * Button outline state
-        --color-btn-outline-default: var(--color-secondary-700) --color-btn-outline-hover: var(--color-secondary-800) --color-btn-outline-pressed: var(--color-secondary-900) --color-btn-outline-disabled: var(--color-secondary-400) // * Color text
-        --color-text: var(--color-primary-900) --color-text-white: #FEFEFE // * Color tittle
-        --color-tittle: var(--color-secondary-700) --color-tittle-white: var(--color-white) // * Background
-        --color-background-primary: #FEFEFE --color-background-secondary: #F2F2F2 // * Color icons
-        --color-icons-primary: var(var(--color-primary-500)) // * Color footer
-        --color-footer: var(--color-primary-900)
+    --color-btn-outline-default: var(--color-secondary-700);
+    --color-btn-outline-hover: var(--color-secondary-800);
+    --color-btn-outline-pressed: var(--color-secondary-900);
+    --color-btn-outline-disabled: var(--color-secondary-400);
+
+    // * Color text
+    --color-text: var(--color-primary-900);
+    --color-text-white: #FEFEFE // * Color tittle
+    --color-tittle: var(--color-secondary-700);
+    --color-tittle-white: var(--color-white);
+
+    // * Background
+    --color-background-primary: #FEFEFE;
+    --color-background-secondary: #F2F2F2;
+
+    // * Color icons
+    --color-icons-primary: var(--color-primary-500);
+
+    // * Color footer
+    --color-footer: var(--color-primary-900);
 }
 
 
