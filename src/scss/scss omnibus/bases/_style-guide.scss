@@ -1,30 +1,57 @@
-// TODO:ANCHOR --- COLORS
+// !TODO --- COLORS
 
 .body {
-    // * Primary
-    --color-primary-100: #FEC5B3;
-    --color-primary-200: #FE9E81;
-    --color-primary-300: #FD774E;
-    --color-primary-400: #FD501C;
-    --color-primary-500: #E33702;
-    --color-primary-600: #D43302;
-    --color-primary-700: #C52F02;
-    --color-primary-800: #B62C02;
-    --color-primary-900: #A72802;
 
+    // TODO --- GENERAL COLORS
 
-    --color-primary: var(--color-primary-500);
-    --color-white: #fff;
-    --color-background-primary: #fff;
-    --color-background-secondary: #f2f2f2;
-    --color-icons: var(--color-primary-500);
-    --color--text: #111;
-    --color-search-bar: var(--color-background);
-    --color-footer: var(--color-primary-600)
+    // * White
+    --color-white: #FEFEFE // * Primary
+        --color-primary-100: #3D698F;
+    --color-primary-200: #365C7D;
+    --color-primary-300: #2E4E6A;
+    --color-primary-400: #264259;
+    --color-primary-500: #1F3548;
+    --color-primary-600: #1A2C3C;
+    --color-primary-700: #152431;
+    --color-primary-800: #101C27;
+    --color-primary-900: #0C141C;
+
+    // * Secondary
+    --color-secondary-100: #FDCABE;
+    --color-secondary-200: #FCAD9C;
+    --color-secondary-300: #FC9179;
+    --color-secondary-400: #FB7456;
+    --color-secondary-500: #FA5833;
+    --color-secondary-600: #F93B10;
+    --color-secondary-700: #E02E06;
+    --color-secondary-800: #BD2705;
+    --color-secondary-900: #9A1F04;
+
+    // * tertiary
+    --color-tertiary-100: #FFDBD1;
+    --color-tertiary-200: #FFC3B2;
+    --color-tertiary-300: #FFA78F;
+    --color-tertiary-400: #FF8B6B;
+    --color-tertiary-500: #FF6F47;
+    --color-tertiary-600: #FF5324;
+    --color-tertiary-700: #FF3700;
+    --color-tertiary-800: #DB3000;
+    --color-tertiary-900: #B82800;
+
+    // TODO --- SPECIFIC COLORS
+
+    // * Button state 
+    --color-btn-default: var(--color-tertiary-700) --color-btn-hover: var(--color-tertiary-800) --color-btn-pressed: var(--color-tertiary-900) --color-btn-disabled: var(--color-tertiary-400) // * Button outline state
+        --color-btn-outline-default: var(--color-secondary-700) --color-btn-outline-hover: var(--color-secondary-800) --color-btn-outline-pressed: var(--color-secondary-900) --color-btn-outline-disabled: var(--color-secondary-400) // * Color text
+        --color-text: var(--color-primary-900) --color-text-white: #FEFEFE // * Color tittle
+        --color-tittle: var(--color-secondary-700) --color-tittle-white: var(--color-white) // * Background
+        --color-background-primary: #FEFEFE --color-background-secondary: #F2F2F2 // * Color icons
+        --color-icons-primary: var(var(--color-primary-500)) // * Color footer
+        --color-footer: var(--color-primary-900)
 }
 
 
-// TODO:ANCHOR --- ICONS
+// TODO --- ICONS
 
 @font-face {
     font-family: 'material-icons-round';
@@ -35,7 +62,7 @@
     // /* For IE6-8 */
     src: local('Material Icons'),
         local('MaterialIcons-Regular'),
-        url(../galery/fonts/MaterialIconsRound-Regular.otf) format('truetype');
+        url(./MaterialIconsRound-Regular.otf) format('truetype');
 }
 
 .material-icons-round {
@@ -53,45 +80,97 @@
     color: inherit;
 }
 
-//  TODO:ANCHOR --- TEXTS
+
+//  TODO --- TEXTS
 
 // * Paragraph
-// @font-face {
-//     font-family: arial;
-//     font-display: swap;
-//     src: local('arial');
-//     src: local('OpenSans-Regular'), local('OpenSans Regular'), url(../galery/fonts/OpenSans-Regular.ttf) format('truetype');
-// }
+@font-face {
+    font-family: p;
+    font-display: swap;
+    src: local('Poppins-Regular'), local('Poppins Regular'), url(./Poppins-Regular.ttf) format('truetype');
+}
 
 // * Paragraph SemiBold
-// @font-face {
-//     font-family: 'p-semibold';
-//     font-display: swap;
-//     src: local('arial');
-//     // src: local('OpenSans-SemiBold'), local('OpenSans SemiBold'), url(../galery/fonts/OpenSans-SemiBold.ttf) format('truetype');
-//     src: local('OpenSans-Regular'), local('OpenSans Regular'), url(../galery/fonts/OpenSans-Regular.ttf) format('truetype');
+@font-face {
+    font-family: 'p-semibold';
+    font-display: swap;
+    font-weight: 600;
+    src: local('Poppins-Regular'), local('Poppins Regular'), url(./Poppins-Regular.ttf) format('truetype');
 
-// }
+}
 
 // * Tittle
 @font-face {
     font-family: 'tittle';
     font-display: swap;
-    src: local('arial');
-    src: local('EBGaramond-BoldItalic'), local('EBGaramond BoldItalic'), url(../galery/fonts/EBGaramond-BoldItalic.ttf) format('truetype');
+    src: local('Roboto-Regular'), local('Roboto Regular'), url(Roboto-Regular.ttf) format('truetype');
+
 }
 
 // * Button
-// @font-face {
-//     font-family:'button';
-//     font-display: swap;
-//     src: local('arial');
-//     src: local('OpenSans-Regular'), local('OpenSans Regular'), url(../galery/fonts/OpenSans-Regular.ttf) format('truetype');
-//     // src: local('OpenSans-SemiBold'), local('OpenSans SemiBold'), url(../galery/fonts/OpenSans-SemiBold.ttf) format('truetype');
-// }
+@font-face {
+    font-family: 'button';
+    font-display: swap;
+    font-weight: 700;
+    src: local('Roboto-Regular'), local('Roboto Regular'), url(Roboto-Regular.ttf) format('truetype');
+
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: 'tittle', Helvetica;
+    line-height: 1;
+    color: var(--color-tittle);
+}
+
+.h1 {
+    font-size: 32px;
+
+    @include min-width(768px) {
+        font-size: 48px;
+    }
+
+}
+
+.h2 {
+    font-size: 28px;
+
+    @include min-width(768px) {
+        font-size: 40px;
+    }
+}
+
+.h3 {
+    font-size: 24px;
+
+    @include min-width(768px) {
+        font-size: 32px;
+    }
+}
+
+.h4 {
+    font-size: 20px;
+
+    @include min-width(768px) {
+        font-size: 22px;
+    }
+}
+
+.p {
+    font-size: inherit;
+    text-align: left;
+}
+
+.p-small {
+    font-size: 14px;
+}
 
 
-//  TODO:ANCHOR --- SPACES
+
+
+//  TODO --- SPACES
 
 :root {
     --space-1: 48px;
@@ -102,26 +181,26 @@
     --space-6: 16px;
     --space-7: 8px;
 
-    // @include min-width(768px) {
-    //     --space-1: 68px;
-    //     --space-2: 56px;
-    //     --space-3: 44px;
-    //     --space-4: 40px;
-    //     --space-5: 36px;
-    //     --space-6: 22px;
-    //     --space-7: 12px;
-    // }
+    @include min-width(768px) {
+        --space-1: 68px;
+        --space-2: 56px;
+        --space-3: 44px;
+        --space-4: 40px;
+        --space-5: 36px;
+        --space-6: 22px;
+        --space-7: 12px;
+    }
 }
 
 
-//  TODO:ANCHOR --- border radius
+//  TODO --- border radius
 
 .border-radius {
     border-radius: 8px;
 }
 
 
-//  TODO:ANCHOR --- SHADOWS
+//  TODO --- SHADOWS
 
 .border-shadow {
     box-shadow: 0 0 10px rgba(0, 0, 0, .25);
@@ -132,7 +211,7 @@
 }
 
 
-//  TODO:ANCHOR --- BORDERS
+//  TODO --- BORDERS
 
 .border-left {
     border-left: 4px solid var(--color-neutral-900);
@@ -141,6 +220,7 @@
 .background-gradient {
     background-image: linear-gradient(40deg, var(--color-primary-500) 30%, var(--color-primary-400) 75%, var(--color-primary-400));
     transition: background-image .3s ease-in;
+
     &:hover {
         background-image: linear-gradient(40deg, var(--color-primary-600) 30%, var(--color-primary-400) 75%, var(--color-primary-300));
 

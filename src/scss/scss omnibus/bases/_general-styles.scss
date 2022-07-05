@@ -55,68 +55,6 @@ a {
     line-height: 1.5;
 }
 
-h1,
-h2,
-h3,
-h4 {
-    font-family: 'tittle', Helvetica;
-    line-height: 1;
-}
-
-h1 {
-    text-align: center;
-    color: var(--color-primary-500);
-}
-
-
-.h1 {
-    font-size: 40px;
-    margin-bottom: var(--space-3);
-
-    @include min-width(768px) {
-        font-size: 48px;
-    }
-
-    @include max-width(320px) {
-        font-size: 30px;
-    }
-}
-
-.h2 {
-    font-size: 28px;
-
-    @include min-width(768px) {
-        font-size: 40px;
-    }
-}
-
-.h3 {
-    font-size: 24px;
-
-    @include min-width(768px) {
-        font-size: 32px;
-    }
-}
-
-.h4 {
-    font-size: 20px;
-
-    @include min-width(768px) {
-        font-size: 22px;
-    }
-}
-
-.p {
-    font-family: inherit;
-    font-size: inherit;
-    font-weight: normal;
-    text-align: left;
-}
-
-.p-small {
-    font-size: 14px;
-}
-
 
 
 a {
