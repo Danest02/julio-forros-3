@@ -1,7 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 //  TODO:ANCHOR --- Z-INDEX
@@ -12,135 +12,91 @@ $z-index-3: 30;
 $z-index-4: 40;
 $z-index-5: 50;
 
-
 html {
-    scroll-behavior: smooth;
+	scroll-behavior: smooth;
 }
 
 body {
-    color: var(--color-text);
-    font-family: arial, sans-serif;
-    font-size: 1rem;
-    line-height: 0;
-
+	color: var(--color-text);
+	font-family: "p", arial, sans-serif, helvetica;
+	font-size: 1rem;
+	line-height: 0;
 }
 
 input {
-    color: var(--color-text);
+	color: var(--color-text);
 }
 
 input::placeholder {
-    user-select: none;
+	user-select: none;
 }
 
-input[type=search] {
-    &::-webkit-search-cancel-button {
-        display: none;
-    }
+input[type="search"] {
+	&::-webkit-search-cancel-button {
+		display: none;
+	}
 }
 
 p {
-    line-height: 1.5;
+	line-height: 1.5;
 }
 
-address, span{
-    line-height: 1.2;
-} 
+address,
+span {
+	line-height: 1.2;
+}
 
 a {
-    line-height: 1;
+	line-height: 1;
 }
 
 .line-height-p {
-    line-height: 1.5;
+	line-height: 1.5;
 }
 
-
-
 a {
-    cursor: pointer;
-    user-select: none;
-    text-decoration: none;
-    color: inherit;
+	cursor: pointer;
+	user-select: none;
+	text-decoration: none;
+	color: inherit;
 }
 
 img {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 li {
-    list-style: none;
+	list-style: none;
 }
 
 html,
 body {
-    height: 100%;
-    position: relative;
+	height: 100%;
+	position: relative;
 }
 
 address {
-    font-style: normal;
-    display: inline-block;
+	font-style: normal;
+	display: inline-block;
 }
 
 .body {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    max-width: var(--width-100vw);
-    @extend .scrollbar-style;
-
-
-
-
+	position: relative;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	max-width: var(--width-100vw);
+	@extend .scrollbar-style;
 }
 
 .section {
-    will-change: transform, opacity;
-    padding: 84px 16px 0 16px;
-    display: block;
-
-    @include min-width(900px) {
-        padding-left: 0;
-        padding-right: 0;
-    }
+	will-change: transform, opacity;
+	padding: 84px 16px 0 16px;
+	display: block;
 }
 
 .container {
-    max-width: 1150px;
-    margin-left: auto;
-    margin-right: auto;
-
-}
-
-.padding {
-    padding: 1rem;
-}
-
-.tittle {
-    position: relative;
-    display: inline-block;
-    margin-bottom: var(--space-1);
-    text-align: center;
-    color: var(--color-primary-700);
-
-    &::after,
-    &::before {
-        content: '';
-        position: absolute;
-        width: 120px;
-        height: 3px;
-        background-color: currentcolor;
-        top: 55%;
-    }
-
-    &::after {
-        left: -140px;
-    }
-
-    &::before {
-        right: -140px;
-    }
-
+	max-width: 1150px;
+	margin-left: auto;
+	margin-right: auto;
 }

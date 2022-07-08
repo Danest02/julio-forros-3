@@ -1,0 +1,347 @@
+// TODO:ANCHOR --- BUTTON
+
+.button-effect{
+    transition: color .5s ease;
+    cursor: pointer;
+    user-select: none;
+    &:hover{
+        color: var(--color-tertiary-hover);
+    }
+}
+.button-effect-scale{
+    transition: color .5s ease, transform .5s ease;
+    cursor: pointer;
+    user-select: none;
+    &:hover{
+        transform: scale(1.05);
+        color: var(--color-tertiary-hover);
+    }
+    &:active{
+        transform: scale(.95);
+    }
+}
+
+
+//  TODO:ANCHOR --- ANIMATED BORDER
+
+.animated-border {
+    &:after {
+        content: "";
+        margin-top: 3px;
+        display: block;
+        transform: translateX(100%);
+        width: 0%;
+        height: 3px;
+        background: var(--color-secondary-500);
+        border-radius: 3px;
+        transition: width .5s, transform .5s ;
+    }
+
+    &:hover:after {
+        width: 100%;
+        transform: translateX(0);
+    }
+}
+
+.animated-border--left {
+    &::after{
+        transform: translateX(0);
+    }
+}
+.animated-border--center {
+    &::after{
+        position: relative;
+        width: 0;
+        transform: translateX(0);
+        margin: auto;
+        transition: left .5s , width .5s;
+    }
+    &:hover::after{
+        width: 100%;
+    }
+}
+
+
+.animated-border--doble {
+    position: relative;
+    transition: color .5s ease-in-out;
+    &::before, &::after{
+        background-color: var(--color-secondary-500);
+        position: absolute;
+        width: 0;
+        height: 2px;
+        transition: width .5s, transform .5s;
+    }
+
+    &::before {
+        transform: translateX(-100%);
+        content: '';
+        top: -2px;
+        right: 0;
+    }
+
+    &::after {
+        left: 0px;
+    }
+
+    &:hover {
+        color: var(--color-secondary-500);
+
+        &::before, &::after {
+            width: 100%;
+            background: var(--color-secondary-500);
+            transform: translateX(0);
+        }
+    }
+}
+
+
+// TODO:ANCHOR --- SCROLLBAR
+
+.scrollbar-none {
+    overflow-y: scroll;
+    // * para mozilla
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-track {
+        display: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        display: none;
+    }
+
+}
+
+.scrollbar-style{
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+    
+    &::-webkit-scrollbar-track {
+        border-radius: 20px;
+        
+    }
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: var(--color-secondary-500);
+        border-radius: 3px;
+    }
+
+}
+
+
+//  TODO:ANCHOR --- BUTTON HAMBURGUER
+
+.hamburguer{
+    $width: 28px;
+    $height: 4px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 28px;
+    width: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .hamburguer__div-center{
+        position: absolute;
+        width: $width;
+        height: $height;
+        background-color: #fff;
+        border-radius: $height * 0.5;
+        &:before, &:after{
+            content: " ";
+            position: absolute;
+            display: block;
+            width: $width;
+            height: $height;
+            border-radius: $height * 0.5;
+            background-color: #fff;
+            top: -8px;
+            transition: background-color 0.5s ease, transform 0.3s;
+
+        }
+        &:after{
+            top: 8px;
+        }
+
+    }
+    .hamburguer--simple{
+        height: 0;
+        &:before, &:after{
+            top: -2px;
+            transform: rotate(-45deg);
+        }
+        &:after{
+            transform: rotate(45deg);
+
+        }
+    }
+    .hamburguer-left-arrow{
+        &:before, &:after{
+            transform: rotate(-35deg);
+            width: $width;
+            top: -.5em;
+            left: -.1em;
+        }
+        &:after{
+            transform: rotate(35deg);
+            top: .5em;
+            left: -.1em;
+
+        }
+
+    }
+    .hamburguer-right-arrow{
+        &:before, &:after{
+            transform: rotate(35deg);
+            width: $width;
+            top: -.5em;
+            right: -.1em;
+        }
+        &:after{
+            transform: rotate(-35deg);
+            top: .5em;
+            right: -.1em;
+
+        }
+
+    }
+    .hamburguer-compress{
+        &:before, &:after{
+            top: 0;
+            transition: top .5s;
+        }
+    }
+    .hamburguer-right-arrow{
+        transform: rotate(90deg);
+
+        &:before, &:after{
+            transform: rotate(-90deg);
+            top: -.5em;
+        }
+        &:after{
+            height: 0;
+        }
+
+    }
+}
+
+
+.contenedor-hamburguer-scroll {
+    background-color: var(--color-white-500);
+    box-shadow: 0 0 9px 0 rgba(0, 0, 0, .5);
+}
+
+.contenedor-hamburguer-active {
+    background: none;
+    box-shadow: none;
+}
+
+
+// TODO:ANCHOR --- BACKGROUND
+
+.background-parallax{
+    background-attachment: fixed;
+    max-width: 100%;
+    background-repeat: no-repeat;
+}
+
+.background-pseudo-element {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+// TODO:ANCHOR --- TITTLE DECORATION
+
+.tittle-decoration-line {
+    position: relative;
+    display: inline-block;
+    margin-bottom: var(--space-1);
+    text-align: center;
+    color: var(--color-primary-700);
+
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        width: 120px;
+        height: 3px;
+        background-color: currentcolor;
+        top: 55%;
+    }
+
+    &::after {
+        left: -140px;
+    }
+
+    &::before {
+        right: -140px;
+    }
+
+}
+
+//  TODO:ANCHOR --- POSITION
+
+.position-absolute{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+}
+.position-fixed{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+
+//  TODO:ANCHOR --- FLEX-BOX
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+.flex-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+.align-start{
+    display: flex;
+    align-items: flex-start;
+}
+.align-center{
+    display: flex;
+    align-items: center;
+}
+.space-between{
+    display: flex;
+    justify-content: space-between;
+}
+.space-evenly{
+    display: flex;
+    justify-content: space-evenly;
+}
+.space-around{
+    display: flex;
+    justify-content: space-around;
+}
+
+
