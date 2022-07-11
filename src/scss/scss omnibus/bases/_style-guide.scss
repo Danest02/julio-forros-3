@@ -1,12 +1,14 @@
-// !TODO:ANCHOR --- COLORS
+// TODO:ANCHOR --- COLORS
 
 .body {
 
     // TODO:ANCHOR --- GENERAL COLORS
 
     // * White
-    --color-white: #FEFEFE // * Primary
-        --color-primary-100: #3D698F;
+    --color-white: #FEFEFE;
+
+     // * Primary
+    --color-primary-100: #3D698F;
     --color-primary-200: #365C7D;
     --color-primary-300: #2E4E6A;
     --color-primary-400: #264259;
@@ -54,7 +56,9 @@
 
     // * Color text
     --color-text: var(--color-primary-900);
-    --color-text-white: #FEFEFE // * Color tittle
+    --color-text-white: #FEFEFE;
+    
+    // * Color tittle
     --color-tittle: var(--color-secondary-700);
     --color-tittle-white: var(--color-white);
 
@@ -70,6 +74,9 @@
 
     // * Color footer
     --scrollbar: var(--color-secondary-500);
+    
+    // * Color user select
+    --color-user-select: var(--color-secondary-700);
 }
 
 //  TODO:ANCHOR --- BUTTON 
@@ -79,9 +86,10 @@
     max-width: max-content;
     font-family: 'button', arial;
     background-color: var(--color-btn-default);
+    font-size: 16px;
     // line-height: 2.25em;
     display: inline-block;
-    padding: 16px 8px;
+    padding: 8px 16px;
     color: var(--color-white);
     text-decoration: none;
     text-align: center;
@@ -94,7 +102,7 @@
     
     &:hover {
         background-color: var(--color-btn-hover);
-        transform: scale(1.03);
+        transform: scale(1.02);
     }
     
     &:active {
@@ -174,16 +182,18 @@
 @font-face {
     font-family: 'tittle';
     font-display: swap;
-    src: local('Roboto-Regular'), local('Roboto Regular'), url(Roboto-Regular.ttf) format('truetype');
-
+    font-style: normal;
+    src: local('Roboto-Bold'), local('Roboto Bold'), url(./Roboto-Bold.ttf) format('truetype');
 }
 
 // * Button
 @font-face {
+    font-family: Arial, Helvetica, sans-serif;
     font-family: 'button';
     font-display: swap;
-    font-weight: 700;
-    src: local('Roboto-Regular'), local('Roboto Regular'), url(Roboto-Regular.ttf) format('truetype');
+    src: local('Roboto-regular'), local('Roboto regular'), format('truetype');
+    // src: local('Poppins-Regular'), local('Poppins Regular'), url(./Poppins-Regular.ttf) format('truetype');
+
 
 }
 
@@ -194,6 +204,7 @@ h4 {
     font-family: 'tittle', arial, sans-serif, helvetica;
     line-height: 1;
     color: var(--color-tittle);
+    // font-weight: bold;
 }
 
 .h1 {

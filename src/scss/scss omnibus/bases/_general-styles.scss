@@ -20,7 +20,7 @@ body {
 	color: var(--color-text);
 	font-family: "p", arial, sans-serif, helvetica;
 	font-size: 1rem;
-	line-height: 0;
+    user-select: var(--color-user-select) ;
 }
 
 input {
@@ -39,6 +39,7 @@ input[type="search"] {
 
 p {
 	line-height: 1.5;
+    
 }
 
 address,
@@ -87,6 +88,10 @@ address {
 	flex-direction: column;
 	max-width: var(--width-100vw);
 	@extend .scrollbar-style;
+	.main{
+		min-height: 2000px;
+		background-color: antiquewhite;
+	}
 }
 
 .section {
@@ -96,7 +101,14 @@ address {
 }
 
 .container {
+	padding-left: 1rem;
+	padding-right: 1rem;
+	@include min-width(1150px){
+		padding-left: 0;
+		padding-right: 0;
+	}
 	max-width: 1150px;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }

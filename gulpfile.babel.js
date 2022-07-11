@@ -109,7 +109,9 @@ gulp.task("cssOmnibus", () => {
         css: ["./public/css/styles.css"],
         safelist: [
           "hamburguer--simple",
-          "navbar-header--hamburguer",
+          "navbar-header__links--hamburger",
+          "navbar-header--hide",
+          "navbar-header--scroll",
           "display-none",
           "animated-border--active",
           "aparecer",

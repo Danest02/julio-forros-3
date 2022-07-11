@@ -2,12 +2,12 @@
 @import "bases/variables";
 @import "bases/style-guide";
 @import "bases/normalize";
-@import "extends";
+@import "bases/extends";
 @import "bases/general-styles";
 @import "bases/keyframes";
 /*  */
 // @import "blocks/top-header";
-// @import "blocks/navbar-header";
+@import "blocks/navbar-header";
 // @import "blocks/contact-button";
 // @import "blocks/sliders";
 // @import "blocks/footer";

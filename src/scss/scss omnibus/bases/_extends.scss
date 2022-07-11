@@ -5,16 +5,16 @@
     cursor: pointer;
     user-select: none;
     &:hover{
-        color: var(--color-tertiary-hover);
+        color: var(--color-btn-hover);
     }
 }
 .button-effect-scale{
-    transition: color .5s ease, transform .5s ease;
+    transition: color .3s ease, transform .3s ease;
     cursor: pointer;
     user-select: none;
     &:hover{
         transform: scale(1.05);
-        color: var(--color-tertiary-hover);
+        color: var(--color-btn-hover);
     }
     &:active{
         transform: scale(.95);
@@ -142,25 +142,27 @@
     $height: 4px;
     background-color: transparent;
     cursor: pointer;
-    height: 28px;
-    width: 28px;
+    height: 40px;
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
     .hamburguer__div-center{
+        transition: background-color .3s ease ;
         position: absolute;
         width: $width;
         height: $height;
-        background-color: #fff;
+        background-color: var(--color-icons-primary);
         border-radius: $height * 0.5;
         &:before, &:after{
+            transition: background-color .3s ease ;
             content: " ";
             position: absolute;
             display: block;
             width: $width;
             height: $height;
             border-radius: $height * 0.5;
-            background-color: #fff;
+            background-color: var(--color-icons-primary);
             top: -8px;
             transition: background-color 0.5s ease, transform 0.3s;
 
@@ -172,12 +174,15 @@
     }
     .hamburguer--simple{
         height: 0;
+        background-color: var(--color-btn-hover);
         &:before, &:after{
             top: -2px;
             transform: rotate(-45deg);
+            background-color: var(--color-btn-hover);
         }
         &:after{
             transform: rotate(45deg);
+            background-color: var(--color-btn-hover);
 
         }
     }
@@ -323,7 +328,7 @@
     display: flex;
     flex-wrap: wrap;
 }
-.align-start{
+.flex-align-start{
     display: flex;
     align-items: flex-start;
 }

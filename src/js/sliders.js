@@ -205,9 +205,9 @@ class MySlider {
 		});
 	}
 }
-const sliderTop = new MySlider(".slider-top");
-sliderTop.initialize();
-sliderTop.navegationButton();
-const sliderMenu = new MySlider(".slider-menu");
-sliderMenu.initialize();
-sliderMenu.navegationButton();
+// const sliderTop = new MySlider(".slider-top");
+// sliderTop.initialize();
+// sliderTop.navegationButton();
+// const sliderMenu = new MySlider(".slider-menu");
+// sliderMenu.initialize();
+// sliderMenu.navegationButton();
