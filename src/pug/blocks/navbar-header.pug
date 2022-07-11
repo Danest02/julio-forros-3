@@ -1,5 +1,7 @@
-.navbar-header#navbar-header.container
-        img(class="navbar-header__logo" height="40" width="214" src="./logo.svg")
+.navbar-header#navbar-header
+    .navbar-header__container.container
+        a(href="./" class="navbar-header__logo" aria-label="inicio")
+            img(height="40" width="214" src="./logo.svg" alt="logo Julio Forros")
         .navbar-header__links-and-buttons
             ul.navbar-header__links#navbar-header__links
                 li(class="navbar-header__link navbar-header__link--inicio navbar-header__link--active")
@@ -13,6 +15,6 @@
                 span(class="navbar-header__button material-icons-round") dark_mode
                 span(class="navbar-header__button material-icons-round") shopping_cart
                 span(class="navbar-header__button material-icons-round") account_circle
-                div(aria-label="abrir menu" id="hamburguer" class="hamburguer navbar-header__button--hamburguer")
+                div(id="hamburguer" class="hamburguer navbar-header__button--hamburguer")
                     .hamburguer__div-center
 
