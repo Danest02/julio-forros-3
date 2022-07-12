@@ -141,7 +141,8 @@ gulp.task("cssPages", () => {
           "display-none",
           "animated-border--active",
           "aparecer",
-          "menu-restaurant--visible"
+          "menu-restaurant--visible",
+          "my-slider__navegation-button--opacity-none"
         ],
         FontFace: true,
         variables: true,
@@ -282,7 +283,7 @@ gulp.task("imagemin720", () => {
               } ,
           resize: {
             enabled: true,
-            width: 620,
+            width: 720,
             // width: Math.round(src.width / 2),
             // height: Math.round(src.height / 2),
           },
@@ -290,7 +291,7 @@ gulp.task("imagemin720", () => {
       })
     )
 
-    .pipe(gulp.dest("public/galery/images/720/"));
+    .pipe(gulp.dest("public/images/"));
 });
 
 gulp.task("default", () => {

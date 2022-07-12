@@ -7,7 +7,7 @@ class MySlider {
 		this.$mySliderSlides = document.querySelector(`${nameSlider} .my-slider__slides`);
 		this.$mySliderSlidesArray = Array.from(document.querySelectorAll(`${nameSlider} .my-slider__slide`));
 		this.$mySliderSlide = document.querySelector(`${nameSlider} .my-slider__slide`);
-		this.slideWidth;
+		// this.slideWidth;
 		this.isDragging = false;
 		this.startPosition = 0;
 		this.currentTranslate = 0;
@@ -17,7 +17,7 @@ class MySlider {
 		this.currentPosition = 0;
 		this.animationID = null;
 		this.movedBy;
-		this.slideWidth = document.querySelector(`${this.nameSlider} .my-slider__slide`).offsetWidth;
+		// this.slideWidth = document.querySelector(`${this.nameSlider} .my-slider__slide`).offsetWidth;
 		this.numberOfColumns = Math.floor(parseInt(getComputedStyle(document.querySelector(`${nameSlider}`)).getPropertyValue("--column")));
 		this.direction;
 		this.$mySliderNextbutton = document.querySelector(`${nameSlider} .my-slider__navegation-button--next`);
@@ -147,6 +147,7 @@ class MySlider {
 		} else if (this.currentIndex < 0) {
 			this.currentIndex = 0;
 		}
+		this.slideWidth = document.querySelector(`${this.nameSlider} .my-slider__slide`).offsetWidth;
 		this.currentTranslate = this.currentIndex * -this.slideWidth;
 		this.prevTranslate = this.currentTranslate;
 		this.setSlidesPosition();
@@ -183,17 +184,6 @@ class MySlider {
 		this.setPositionByIndex();
 		this.$mySliderSlides.style.cursor = "grab";
 	}
-
-	// setPositionByIndex() {
-	// 	if (this.currentIndex > this.$mySliderSlidesArray.length - this.numberOfColumns) {
-	// 		this.currentIndex = this.$mySliderSlidesArray.length - this.numberOfColumns;
-	// 	} else if (this.currentIndex < 0) {
-	// 		this.currentIndex = 0;
-	// 	}
-	// 	this.currentTranslate = this.currentIndex * -this.slideWidth;
-	// 	this.prevTranslate = this.currentTranslate;
-	// 	this.setSlidesPosition();
-	// }
 	navegationButton() {
 		this.$mySlider.addEventListener("click", (e) => {
 			if (e.target == this.$mySliderNextbutton) {
@@ -205,9 +195,6 @@ class MySlider {
 		});
 	}
 }
-// const sliderTop = new MySlider(".slider-top");
-// sliderTop.initialize();
-// sliderTop.navegationButton();
-// const sliderMenu = new MySlider(".slider-menu");
-// sliderMenu.initialize();
-// sliderMenu.navegationButton();
+const sliderTop = new MySlider(".slider-header");
+sliderTop.initialize();
+sliderTop.navegationButton();

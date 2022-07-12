@@ -83,11 +83,12 @@
 
 .mybtn {
     min-width: max-content;
+    max-height: 35px;
     max-width: max-content;
     font-family: 'button', arial;
     background-color: var(--color-btn-default);
     font-size: 16px;
-    // line-height: 2.25em;
+    line-height: 19px;
     display: inline-block;
     padding: 8px 16px;
     color: var(--color-white);
@@ -209,7 +210,6 @@ h4 {
 
 .h1 {
     font-size: 32px;
-
     @include min-width(768px) {
         font-size: 48px;
     }

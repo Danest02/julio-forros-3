@@ -1,15 +1,15 @@
 @import "bases/breakpoints";
 @import "bases/variables";
-@import "bases/style-guide";
 @import "bases/normalize";
 @import "bases/extends";
+@import "bases/style-guide";
 @import "bases/general-styles";
 @import "bases/keyframes";
 /*  */
 // @import "blocks/top-header";
 @import "blocks/navbar-header";
 // @import "blocks/contact-button";
-// @import "blocks/sliders";
+@import "blocks/sliders";
 // @import "blocks/footer";
 
 @import "bases/modifiers.scss";

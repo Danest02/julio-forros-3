@@ -1,10 +1,51 @@
-header{
-    background-color: red;
-    min-height: 100vh;
-    padding-top: var(--navbar-header-height);
-    .slider-header{
-        height: 100%;
-        width: 100%;
-        background-color: rebeccapurple;
+@import "../scss omnibus/bases/breakpoints";
+
+header {
+	// background-color: red;
+	min-height: 100vh;
+	padding-top: var(--navbar-header-height);
+}
+.slider-header__slide {
+	display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    gap: var(--space-6);
+    grid-template-columns: 1fr;
+    grid-template-rows: min-content 1fr min-content;
+    @include min-width-landscape(500px) {
+        grid-template-columns: auto 1fr;
+        grid-template-rows: 1fr auto auto 2fr;
     }
+    @include min-width-landscape(1200px) {
+        padding-left: 10%;
+        padding-right: 10%;
+    }
+	.slider-header__tittle {
+		grid-row: 1 / 2;
+		grid-column: 1/2;
+        text-align: center;
+		@include min-width-landscape(500px) {
+			grid-column: 2 / 3;
+			grid-row: 2 / 3;
+		}
+	}
+	.slider-header__button {
+		grid-row: 3 / 4;
+		grid-column: 1/2;
+        justify-self: center;
+		@include min-width-landscape(500px) {
+			grid-column: 2 / 3;
+			grid-row: 3 / 4;
+		}
+	}
+	.slider-header__img {
+		max-height: calc(100vh - var(--navbar-header-height));
+		object-fit: contain;
+		grid-row: 2 / 3;
+		grid-column: 1/2;
+		@include min-width-landscape(500px) {
+			grid-column: 1 / 2;
+			grid-row: 1 / 5;
+		}
+	}
 }
