@@ -3,10 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-  },
   "devDependencies": {
-    "serve": "^13.0.2",
     "@babel/core": "^7.15.5",
     "@babel/preset-env": "^7.15.6",
     "@babel/register": "^7.16.7",
@@ -25,12 +22,12 @@
     "gulp-terser": "^2.0.1",
     "postcss": "^8.3.7",
     "postcss-cli": "^8.3.1",
-    "sass": "^1.42.1"
+    "sass": "^1.42.1",
+    "serve": "^13.0.2"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "serve public"
-
   },
   "repository": {
     "type": "git",

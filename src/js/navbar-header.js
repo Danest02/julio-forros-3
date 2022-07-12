@@ -20,14 +20,14 @@ window.addEventListener("scroll", () => {
     let currentScroll = window.pageYOffset;
     if (currentScroll >= initialScroll && currentScroll >= mainScroll) {
         navbarHeader.classList.add("navbar-header--hide")
-        navbarHeader.classList.add("navbar-header--scroll")
+        // navbarHeader.classList.add("navbar-header--scroll")
     } else if (currentScroll <= mainScroll) {
         navbarHeader.classList.add("navbar-header--hide")
     } else {
         navbarHeader.classList.remove("navbar-header--hide")
     }
     if (currentScroll == 0) {
-        navbarHeader.classList.remove("navbar-header--scroll")
+        // navbarHeader.classList.remove("navbar-header--scroll")
         navbarHeader.classList.remove("navbar-header--hide")
     }
 

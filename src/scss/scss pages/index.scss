@@ -1,3 +1,10 @@
-body{
+header{
     background-color: red;
+    min-height: 100vh;
+    padding-top: var(--navbar-header-height);
+    .slider-header{
+        height: 100%;
+        width: 100%;
+        background-color: rebeccapurple;
+    }
 }
