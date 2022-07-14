@@ -83,12 +83,12 @@
 
 .mybtn {
     min-width: max-content;
-    max-height: 35px;
+    max-height: 36px;
     max-width: max-content;
     font-family: 'button', arial;
     background-color: var(--color-btn-default);
     font-size: 16px;
-    line-height: 19px;
+    line-height: 20px;
     display: inline-block;
     padding: 8px 16px;
     color: var(--color-white);
@@ -103,11 +103,11 @@
     
     &:hover {
         background-color: var(--color-btn-hover);
-        transform: scale(1.02);
+        // transform: scale(1.02);
     }
     
     &:active {
-        transform: scale(1);
+        transform: scale(.9);
         background-color: var(--color-btn-pressed);
 
     }
@@ -210,7 +210,7 @@ h4 {
 
 .h1 {
     font-size: 32px;
-    @include min-width(768px) {
+    @include  min-height-min-width(768px, 400px) {
         font-size: 48px;
     }
 
@@ -219,7 +219,7 @@ h4 {
 .h2 {
     font-size: 28px;
 
-    @include min-width(768px) {
+    @include  min-height-min-width(768px, 400px) {
         font-size: 40px;
     }
 }
@@ -227,7 +227,7 @@ h4 {
 .h3 {
     font-size: 24px;
 
-    @include min-width(768px) {
+    @include  min-height-min-width(768px, 400px) {
         font-size: 32px;
     }
 }
@@ -235,7 +235,7 @@ h4 {
 .h4 {
     font-size: 20px;
 
-    @include min-width(768px) {
+    @include min-height-min-width(768px, 400px) {
         font-size: 22px;
     }
 }

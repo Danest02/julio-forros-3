@@ -88,6 +88,9 @@ address {
 	flex-direction: column;
 	max-width: var(--width-100vw);
 	@extend .scrollbar-style;
+	.header{
+		position: relative;
+	}
 	.main{
 		min-height: 2000px;
 		background-color: antiquewhite;

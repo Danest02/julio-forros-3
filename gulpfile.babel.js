@@ -118,7 +118,7 @@ gulp.task("cssOmnibus", () => {
           "menu-restaurant--visible"
         ],
         FontFace: true,
-        variables: true,
+        variables: false,
       })
     )
     .pipe(gulp.dest("./public/"));
