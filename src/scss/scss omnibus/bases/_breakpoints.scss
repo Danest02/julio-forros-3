@@ -123,6 +123,11 @@ $desktop-fhd: 1920px - 10px;
 		@content;
 	}
 }
+@mixin max-height-min-width($height, $width) {
+	@media (max-height: $height) and (min-width: $width) {
+		@content;
+	}
+}
 @mixin  min-height-min-width($height, $width) {
 	@media (min-height: $height) and (min-width: $width) {
 		@content;

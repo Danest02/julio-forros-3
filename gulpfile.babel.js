@@ -115,7 +115,8 @@ gulp.task("cssOmnibus", () => {
           "display-none",
           "animated-border--active",
           "aparecer",
-          "menu-restaurant--visible"
+          "my-slider__navegation-button--opacity-none",
+          "transition-none"
         ],
         FontFace: true,
         variables: false,
@@ -136,13 +137,6 @@ gulp.task("cssPages", () => {
         content: ["./public/*.html"],
         css: ["./public/css/styles.css"],
         safelist: [
-          "hamburguer--simple",
-          "navbar-header--hamburguer",
-          "display-none",
-          "animated-border--active",
-          "aparecer",
-          "menu-restaurant--visible",
-          "my-slider__navegation-button--opacity-none"
         ],
         FontFace: true,
         variables: true,
@@ -263,11 +257,11 @@ gulp.task("imagemin400", () => {
     .pipe(gulp.dest("public/galery/images/400/"));
 });
 
-// TODO--- MINIFICAR IMAGENES 720
+// TODO--- MINIFICAR IMAGENES 500
 
-gulp.task("imagemin720", () => {
+gulp.task("imagemin500", () => {
   return gulp
-    .src("src/galery/images/720/*")
+    .src("src/galery/images/500/*")
     .pipe(
       squoosh({
         encodeOptions: {
@@ -283,7 +277,7 @@ gulp.task("imagemin720", () => {
               } ,
           resize: {
             enabled: true,
-            width: 720,
+            width: 500,
             // width: Math.round(src.width / 2),
             // height: Math.round(src.height / 2),
           },

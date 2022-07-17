@@ -8,11 +8,13 @@
     grid-template-rows: 1fr min-content;
     width: 100%;
 	overflow: hidden;
+	// background-color: red;
 	.slider-menu__slides-container {
 		overflow: hidden;
 	}
     
 	.my-slider__navegation {
+		// background-color: gray;
         height: min-content;
 		.my-slider__navegation-button {
 			cursor: pointer;
@@ -32,43 +34,40 @@
 	}
 
 	.my-slider__navegation--down {
-		display: flex;
-        margin-top: var(--space-6);
+		display: none;
 		gap: 1rem;
         justify-content: center;
+		padding: 4px 0;
+		margin-bottom: var(--space-7);
+		@include min-height-min-width(400px, 700px){
+			display: flex; 
+		}	
 		.my-slider__navegation-button {
-            background-image: none;
-            @extend .flex-center, .mybtn, .mybtn--outline;
-            height: 40px;
+			min-height: 48px;
+            min-width: 48px;
+			border-radius: 50%;
+			box-shadow: 0 0 10px rgba(17, 17, 17, 0.25);
+			transition: transform .3s ease;
             &:hover{
-                transform: scale(1);
+				transform: scale(1.07);
+				&::after{
+					color: var(--color-btn-outline-default);
+				}
+            }
+            &:active{
+				transform: scale(1);
             }
 			&::after {
                 height: 100%;
+				width: 100%;
 				border-radius: 50%;
 				font-family: "material-icons-round";
-				transition: transform 0.3s ease;
 				@extend .flex-center;
 				color: inherit;
-				font-size: 28px;
+				font-size: 32px;
 			}
-            &::before{
-                color: inherit;
-            }
 		}
 
-		.my-slider__navegation-button--back {
-            &::before{
-                content: "Atras"
-            }
-		}
-
-		.my-slider__navegation-button--next {
-            flex-direction: row-reverse;
-            &::before{
-                content: "Siguiente"
-            }
-		}
 	}
 
 	.my-slider__navegation--side {
@@ -120,24 +119,24 @@
 			right: 0;
 		}
 
-		.my-slider__navegation-button--opacity-none {
-			opacity: 0;
-			cursor: default;
+	}
+	.my-slider__navegation-button--opacity-none {
+		opacity: 0;
+		cursor: default;
 
-			&::after,
-			&::before {
-				pointer-events: none;
-			}
+		&::after,
+		&::before {
+			pointer-events: none;
 		}
 	}
 	.my-slider__navegation--side-small {
 		.my-slider__navegation-button {
             @extend .flex-center;
 			position: absolute;
-            min-height: 48px;
-            min-width: 48px;
             top: calc(50% - 20px);
 			border-radius: 50%;
+            min-height: 48px;
+            min-width: 48px;
 			box-shadow: 0 0 10px rgba(17, 17, 17, 0.25);
 			overflow: hidden;
 			transition: transform .3s, opacity 0.3s ease;
