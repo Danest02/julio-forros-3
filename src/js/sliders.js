@@ -1,12 +1,14 @@
 // window.addEventListener("load", function () {
 // });
 class MySlider {
-	constructor(nameSlider, infinity, interval) {
+	constructor(nameSlider, parameters) {
 		this.nameSlider = nameSlider;
 		this.$mySlider = document.querySelector(nameSlider);
 		this.$mySliderSlides = document.querySelector(`${nameSlider} .my-slider__slides`);
 		this.$mySliderSlidesArray = Array.from(document.querySelectorAll(`${nameSlider} .my-slider__slide`));
 		this.$mySliderSlide = document.querySelector(`${nameSlider} .my-slider__slide`);
+		this.$mySliderNextbutton = document.querySelector(`${nameSlider} .my-slider__navegation-button--next`);
+		this.$mySliderBackbutton = document.querySelector(`${nameSlider} .my-slider__navegation-button--back`);
 		this.isDragging = false;
 		this.startPosition = 0;
 		this.currentTranslate = 0;
@@ -14,28 +16,18 @@ class MySlider {
 		this.currentIndex = 0;
 		this.index = 0;
 		this.currentPosition = 0;
-		this.animationID = null;
-		this.movedBy;
 		this.numberOfColumns = Math.floor(parseInt(getComputedStyle(document.querySelector(`${nameSlider}`)).getPropertyValue("--column")));
-		this.direction;
-		this.$mySliderNextbutton = document.querySelector(`${nameSlider} .my-slider__navegation-button--next`);
-		this.$mySliderBackbutton = document.querySelector(`${nameSlider} .my-slider__navegation-button--back`);
+		this.numberOfRows = Math.floor(parseInt(getComputedStyle(document.querySelector(`${nameSlider}`)).getPropertyValue("--row")));
+		this.gap = Math.floor(parseInt(getComputedStyle(document.querySelector(`${nameSlider}`)).getPropertyValue("--gap")));
 		this.mySliderSlidesArray = document.querySelectorAll(`${this.nameSlider} .my-slider__slide`);
-		this.semaphoreInterval = interval;
-		this.mySliderFirstClone = false;
-		this.mySliderLastClone = false;
-		this.semaphoreinfinity = infinity;
-		this.semaphoreHideNavegationButton = false;
+		this.semaphoreButton = true;
+		this.interval = parameters.interval;
+		this.semaphoreInterval;
+		this.loop = parameters.loop;
 	}
 	initialize() {
-		if (this.semaphoreinfinity) {
-			this.infinity();
-		} else {
-			this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
-		}
-		if (this.semaphoreInterval) {
-			this.interval();
-		}
+		// TODO:ANCHOR --- ESCUCHADORES DE EVENTOS
+		console.log((this.currentIndex))
 		window.addEventListener(
 			"resize",
 			() => {
@@ -122,27 +114,163 @@ class MySlider {
 				passive: true,
 			}
 		);
+
+		// TODO:ANCHOR --- EJECUTAR FUNCIONES
+		// * STUB --- Botones de navegaciom
+		if (this.$mySliderNextbutton) {
+			this.navegationButton();
+		}
+		// * STUB --- Loop
+		if (typeof this.loop !== "undefined") {
+			this.funcitionLoop();
+		} else {
+			if(this.$mySliderNextbutton)
+			this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
+		}
+		// * STUB --- Interval
+		if (typeof this.interval !== "undefined") {
+			this.semaphoreInterval = true;
+			this.functionInterval();
+		}
 	}
+	// TODO:ANCHOR --- FUNCIONES COMIENZO, MOVIMIENTO Y FINAL
+	touchStart(e) {
+		this.isDragging = true;
+		this.startPosition = this.getPositionX(e);
+	}
+	touchMove(e) {
+		if (this.semaphoreInterval) {
+			this.semaphoreInterval = false;
+		}
+		if (this.isDragging) {
+			this.$mySliderSlides.style.cursor = "grabbing";
+			this.currentPosition = this.getPositionX(e);
+			this.currentTranslate = this.prevTranslate + this.currentPosition - this.startPosition;
+			this.setSlidesPosition();
+			// this.animation();
+		}
+	}
+	touchEnd() {
+		let movedBy, direction;
+		this.isDragging = false;
+		movedBy = this.currentTranslate - this.prevTranslate;
+		movedBy > 0 ? (direction = -1) : (direction = 1);
+		if (Math.abs(movedBy) > this.slideWidth * 2.5) {
+			this.currentIndex += 3 * direction;
+		} else if (Math.abs(movedBy) > this.slideWidth * 1.5) {
+			this.currentIndex += 2 * direction;
+		} else if (Math.abs(movedBy) > 50) {
+			this.currentIndex += 1 * direction;
+		}
+		this.setPositionByIndex();
+		this.$mySliderSlides.style.cursor = "grab";
+	}
+
 	// TODO:ANCHOR --- ESTABLECER TRANSLACION DE $SLIDES
 	setSlidesPosition() {
 		this.$mySliderSlides.style.transform = `translateX(${this.currentTranslate}px)`;
 	}
 
+	// TODO:ANCHOR --- OBTENER POSICION DE X
 	getPositionX(e) {
 		return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
 	}
 
-	animation() {
+	// TODO:ANCHOR --- ANIMACION
+	// animation() {
+	// this.setSlidesPosition();
+	// if(this.isDragging){
+	// 	reguestAnimationFrame(this.animation())
+	// }
+	// }
+	// TODO:ANCHOR --- ESTABLECER INDICE DE POSICION
+	setPositionByIndex() {
+		// * STUB --- Bloquear el desplazamiento de los slide de los extremos
+		if (typeof this.loop == "undefined") {
+			let a
+			if (this.numberOfColumns == 1 && this.numberOfRows == 1){
+				a = Math.round(this.$mySliderSlidesArray.length -1)
+			}else if(this.numberOfColumns == 1 && this.numberOfRows == 3){
+				a = Math.round(this.$mySliderSlidesArray.length / this.numberOfRows)
+			}else if(this.numberOfColumns == 2 && this.numberOfRows == 1){
+				a = Math.round(this.$mySliderSlidesArray.length - this.numberOfColumns)
+			}else if(this.numberOfColumns == 2 && this.numberOfRows == 2){
+				a = Math.round(this.$mySliderSlidesArray.length / this.numberOfColumns -2)
+			}else if(this.numberOfColumns == 3 && this.numberOfRows == 2){
+				a = Math.ceil(this.$mySliderSlidesArray.length / this.numberOfColumns -1  )
+			}
+			if (this.currentIndex > a ) {
+				this.currentIndex = a ;
+			} else if (this.currentIndex < 0) {
+				this.currentIndex = 0;
+			}
+			if (this.currentIndex == 0) {
+				this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
+			} else {
+				this.$mySliderBackbutton.classList.remove("my-slider__navegation-button--opacity-none");
+			}	
+			if (this.currentIndex == a) {
+				this.$mySliderNextbutton.classList.add("my-slider__navegation-button--opacity-none");
+			} else {
+				this.$mySliderNextbutton.classList.remove("my-slider__navegation-button--opacity-none");
+			}
+	
+		}
+		// * STUB --- Ejecutar salto del slide infinito
+		if (this.currentIndex == this.$mySliderSlidesArray.length + 1 || this.currentIndex == 0 && typeof this.loop !== "undefined") {
+			setTimeout(() => {
+				this.jumpOfSlide();
+			}, 500);
+		}
+		this.slideWidth = document.querySelector(`${this.nameSlider} .my-slider__slide`).offsetWidth;
+		this.currentTranslate = this.currentIndex * -(this.slideWidth + this.gap);
+		this.prevTranslate = this.currentTranslate;
 		this.setSlidesPosition();
-		// if(this.isDragging){
-		// 	reguestAnimationFrame(this.animation())
-		// }
+
 	}
-	a() {
+
+	navegationButton() {
+		this.$mySlider.addEventListener("click", (e) => {
+			if (this.semaphoreButton) {
+				this.semaphoreButton = false;
+				this.semaphoreInterval = false;
+				if (e.target == this.$mySliderNextbutton) {
+					this.currentIndex += 1 * this.numberOfColumns;
+				} else if (e.target == this.$mySliderBackbutton) {
+					this.currentIndex -= 1 * this.numberOfColumns;
+				}
+				this.setPositionByIndex();
+				setTimeout(() => {
+					this.semaphoreButton = true;
+				}, 600);
+			} else {
+			}
+		});
+	}
+	funcitionLoop() {
+		let mySliderFirstClone = this.mySliderSlidesArray[0].cloneNode(true);
+		let mySliderLastClone = this.mySliderSlidesArray[this.mySliderSlidesArray.length - 1].cloneNode(true);
+		mySliderFirstClone.querySelector("img").addEventListener("dragstart", (e) => {
+			e.preventDefault();
+		});
+		mySliderLastClone.querySelector("img").addEventListener("dragstart", (e) => {
+			e.preventDefault();
+		});
+		mySliderFirstClone.classList.add("first-clone");
+		mySliderLastClone.classList.add("last-clone");
+		document.querySelector(`${this.nameSlider} .my-slider__slides`).append(mySliderFirstClone);
+		document.querySelector(`${this.nameSlider} .my-slider__slides`).prepend(mySliderLastClone);
+
+		this.$mySliderSlides.classList.add("transition-none");
+		this.currentIndex = 1;
+		this.$mySliderSlides.classList.remove("transition-none");
+		this.setPositionByIndex();
+	}
+	// TODO:ANCHOR --- SALTO DE SLIDE DEL LOPP
+	jumpOfSlide() {
 		this.$mySliderSlides.classList.add("transition-none");
 		if (this.currentIndex == 0) {
 			this.currentIndex = this.$mySliderSlidesArray.length;
-			console.log("se ejecuto A");
 		} else {
 			this.currentIndex = 1;
 		}
@@ -153,110 +281,28 @@ class MySlider {
 			this.$mySliderSlides.classList.remove("transition-none");
 		}, 100);
 	}
-	setPositionByIndex() {
-		// * Bloquear el desplazamiento de los slide de los extremos
-		// if (!this.semaphoreinfinity) {
-		// 	if (this.currentIndex > this.$mySliderSlidesArray.length - this.numberOfColumns) {
-		// 		this.currentIndex = this.$mySliderSlidesArray.length - this.numberOfColumns;
-		// 	} else if (this.currentIndex < 0) {
-		// 		this.currentIndex = 0;
-		// 	}
-		// }
-		if (this.currentIndex == this.$mySliderSlidesArray.length + 1 || this.currentIndex == 0) {
-			setTimeout(() => {
-				this.a();
-			}, 500);
-		}
-		this.slideWidth = document.querySelector(`${this.nameSlider} .my-slider__slide`).offsetWidth;
-		this.currentTranslate = this.currentIndex * -this.slideWidth;
-		this.prevTranslate = this.currentTranslate;
-		this.setSlidesPosition();
 
-		console.log(this.currentIndex);
-		console.log(this.$mySliderSlidesArray.length);
-	}
-
-	touchStart(e) {
-		this.isDragging = true;
-		this.startPosition = this.getPositionX(e);
-	}
-	touchMove(e) {
-		if (this.isDragging) {
-			this.$mySliderSlides.style.cursor = "grabbing";
-			this.currentPosition = this.getPositionX(e);
-			this.currentTranslate = this.prevTranslate + this.currentPosition - this.startPosition;
-			this.animation();
-		}
-	}
-	touchEnd() {
-		this.isDragging = false;
-		this.movedBy = this.currentTranslate - this.prevTranslate;
-		this.movedBy > 0 ? (this.direction = -1) : (this.direction = 1);
-		if (Math.abs(this.movedBy) > this.slideWidth * 2.5) {
-			this.currentIndex += 3 * this.direction;
-		} else if (Math.abs(this.movedBy) > this.slideWidth * 1.5) {
-			this.currentIndex += 2 * this.direction;
-		} else if (Math.abs(this.movedBy) > 50) {
-			this.currentIndex += 1 * this.direction;
-		}
-		this.setPositionByIndex();
-		this.$mySliderSlides.style.cursor = "grab";
-		if (!this.semaphoreinfinity) {
-			this.hideNavegationButton();
-		}
-	}
-	navegationButton() {
-		this.$mySlider.addEventListener("click", (e) => {
-			if (e.target == this.$mySliderNextbutton) {
-				this.currentIndex += 1;
-			} else if (e.target == this.$mySliderBackbutton) {
-				this.currentIndex -= 1;
-			}
-			this.setPositionByIndex();
-		});
-	}
-	hideNavegationButton() {
-		// this.semaphoreHideNavegationButton = true;
-		if (this.currentIndex == 0) {
-			this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
-		} else {
-			this.$mySliderBackbutton.classList.remove("my-slider__navegation-button--opacity-none");
-		}
-		if (this.currentIndex == this.$mySliderSlidesArray.length - this.numberOfColumns) {
-			this.$mySliderNextbutton.classList.add("my-slider__navegation-button--opacity-none");
-		} else {
-			this.$mySliderNextbutton.classList.remove("my-slider__navegation-button--opacity-none");
-		}
-	}
-	infinity() {
-		this.semaphoreinfinity = true;
-		this.mySliderFirstClone = this.mySliderSlidesArray[0].cloneNode(true);
-		this.mySliderLastClone = this.mySliderSlidesArray[this.mySliderSlidesArray.length - 1].cloneNode(true);
-		this.mySliderFirstClone.querySelector("img").addEventListener("dragstart", (e) => {
-			e.preventDefault();
-		});
-		this.mySliderLastClone.querySelector("img").addEventListener("dragstart", (e) => {
-			e.preventDefault();
-		});
-		this.mySliderFirstClone.classList.add("first-clone");
-		this.mySliderLastClone.classList.add("last-clone");
-		document.querySelector(`${this.nameSlider} .my-slider__slides`).append(this.mySliderFirstClone);
-		document.querySelector(`${this.nameSlider} .my-slider__slides`).prepend(this.mySliderLastClone);
-
-		this.$mySliderSlides.classList.add("transition-none");
-		this.currentIndex = 1;
-		this.$mySliderSlides.classList.remove("transition-none");
-		this.setPositionByIndex();
-	}
-	interval() {
+	functionInterval() {
 		setInterval(() => {
-			this.currentIndex += 1;
-			this.setPositionByIndex();
-		}, 5000);
+			if (this.semaphoreInterval) {
+				this.currentIndex += 1;
+				this.setPositionByIndex();
+			} else if (!this.semaphoreInterval) {
+				setTimeout(() => {
+					this.semaphoreInterval = true;
+				}, this.interval.resume);
+			}
+		}, this.interval.time);
 	}
-	pauseInterval
 }
-const sliderTop = new MySlider(".slider-header", true, true);
+const sliderTop = new MySlider(".slider-header", {
+	interval: {
+		time: 5000,
+		resume: 7000,
+	},
+	loop: "active"
+});
 sliderTop.initialize();
-sliderTop.navegationButton();
-// sliderTop.infinity();
+const sliderCatalogueIndex = new MySlider(".slider-catalogue-index", {
+});
+sliderCatalogueIndex.initialize();

@@ -2,7 +2,7 @@ extends ./templates/template.pug
 block head
     link(rel="stylesheet" type="text/css" href="./index.css")
 block header
-    .slider-header.my-slider
+    .slider-header.my-slider.container
         .slider-header__slides.my-slider__slides
             .slider-header__slide.my-slider__slide
                 h2.h1.slider-header__tittle Asiento Para Moto DT Personalizado
@@ -29,7 +29,7 @@ block header
                 button.slider-header__button.mybtn Ver más
                 .img__container
                     img(class="slider-header__img" src="./images/slider-header-4.webp" loading="lazy" alt="Asiento DT Personalizado")
-        .slider-header__navegation.my-slider__navegation.my-slider__navegation--down
+        .slider-heder__navegation.slider-header__navegation.my-slider__navegation.my-slider__navegation--down
             .my-slider__navegation-button.my-slider__navegation-button--back
             .my-slider__navegation-button.my-slider__navegation-button--next
     .vector-curve
@@ -38,5 +38,47 @@ block header
         </svg>
 
 block main
-    
+    .seccion-catalogue-index
+        .catalogue-index.container
+            .slider-catalogue-index.my-slider
+                .slider-catalogue-index__slides.my-slider__slides
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/asientos.webp" loading="lazy" alt="Asientos")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/calcomanias.webp" loading="lazy" alt="Calcomanias")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/cascos.webp" loading="lazy" alt="Cascos")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/forros.webp" loading="lazy" alt="Forros")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/defensas.webp" loading="lazy" alt="defensas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/llantas.webp" loading="lazy" alt="Llantas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/resinas.webp" loading="lazy" alt="Resinas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/sabanas.webp" loading="lazy" alt="Sabanas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/asientos.webp" loading="lazy" alt="Asientos")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/calcomanias.webp" loading="lazy" alt="Calcomanias")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/cascos.webp" loading="lazy" alt="Cascos")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/forros.webp" loading="lazy" alt="Forros")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/defensas.webp" loading="lazy" alt="defensas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/llantas.webp" loading="lazy" alt="Llantas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/resinas.webp" loading="lazy" alt="Resinas")
+                    .slider-catalogue-index__slide.my-slider__slide
+                        img(class="slider-catalogue-index__img" src="./images/sabanas.webp" loading="lazy" alt="Sabanas")
+                .slider-catalogue-index__buttons
+                    .slider-header__navegation.my-slider__navegation.my-slider__navegation--down
+                        .my-slider__navegation-button.my-slider__navegation-button--back
+                        .my-slider__navegation-button.my-slider__navegation-button--next
+                    a(class="mybtn") Ver Catalogo
+
+
 

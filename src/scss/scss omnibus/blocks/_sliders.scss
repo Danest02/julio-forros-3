@@ -2,6 +2,7 @@
 .my-slider {
 	--column: 1;
 	--row: 1;
+	--gap: 0;
 	position: relative;
     display: grid;
     height: 100%;
@@ -36,15 +37,15 @@
 	.my-slider__navegation--down {
 		display: none;
 		gap: 1rem;
+		height: min-content;
         justify-content: center;
-		padding: 4px 0;
-		margin-bottom: var(--space-7);
+		align-items: center;
 		@include min-height-min-width(400px, 700px){
 			display: flex; 
 		}	
 		.my-slider__navegation-button {
-			min-height: 48px;
-            min-width: 48px;
+			height: 48px;
+            width: 48px;
 			border-radius: 50%;
 			box-shadow: 0 0 10px rgba(17, 17, 17, 0.25);
 			transition: transform .3s ease;
@@ -201,12 +202,11 @@
 	cursor: grab;
 	transform: translateX(0);
 	transition: transform 0.3s ease-out;
-	// background-color: goldenrod;
 	
 	.my-slider__slide {
-		// background-color: blue;
 		height: 100%;
 		user-select: none;
         overflow: hidden;
+		line-height: 0;
 	}
 }

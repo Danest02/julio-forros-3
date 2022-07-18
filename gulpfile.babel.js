@@ -116,7 +116,7 @@ gulp.task("cssOmnibus", () => {
           "animated-border--active",
           "aparecer",
           "my-slider__navegation-button--opacity-none",
-          "transition-none"
+          "transition-none",
         ],
         FontFace: true,
         variables: false,
@@ -139,7 +139,7 @@ gulp.task("cssPages", () => {
         safelist: [
         ],
         FontFace: true,
-        variables: true,
+        variables: false,
       })
     )
     .pipe(gulp.dest("./public/"));
@@ -195,11 +195,11 @@ gulp.task("imagemindefault", () => {
 });
 
 
-// TODO--- MINIFICAR IMAGENES 300
+// TODO--- MINIFICAR IMAGENES 310
 
-gulp.task("imagemin300", () => {
+gulp.task("imagemin310", () => {
   return gulp
-    .src("src/galery/images/300/*")
+    .src("src/galery/images/310/*")
     .pipe(
       squoosh({
         encodeOptions: {
@@ -211,11 +211,11 @@ gulp.task("imagemin300", () => {
         preprocessOptions: {
           quant : { 
                 habilitado : true , 
-                numColors : 16 , 
+                numColors : 128 , 
               } ,
           resize: {
             enabled: true,
-            width: 300,
+            width: 310,
             // width: Math.round(src.width / 2),
             // height: Math.round(src.height / 2),
           },
@@ -223,7 +223,7 @@ gulp.task("imagemin300", () => {
       })
     )
 
-    .pipe(gulp.dest("public/galery/images/300/"));
+    .pipe(gulp.dest("public/images/"));
 });
 
 // TODO--- MINIFICAR IMAGENES 400
