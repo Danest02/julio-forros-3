@@ -40,8 +40,8 @@
 		height: min-content;
         justify-content: center;
 		align-items: center;
+		display: flex; 
 		@include min-height-min-width(400px, 700px){
-			display: flex; 
 		}	
 		.my-slider__navegation-button {
 			height: 48px;

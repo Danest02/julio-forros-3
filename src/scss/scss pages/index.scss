@@ -1,5 +1,4 @@
 @import "../scss omnibus/bases/breakpoints";
-@import "../scss omnibus/bases/style-guide";
 @import "../scss omnibus/bases/extends";
 
 $vector-curve-height: 72px;
@@ -7,7 +6,7 @@ $vector-curve-height: 72px;
 	// border: none !important;
 }
 header {
-	min-height: 100vh;
+	min-height: calc(100vh - 3rem);
 	padding-top: var(--navbar-header-height);
 	padding-bottom: 44px;
 	@include landscape {

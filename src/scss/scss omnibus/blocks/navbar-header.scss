@@ -64,6 +64,7 @@
                 }
             }
             .navbar-header__links--hamburger{
+                height: calc(100% + 5rem);
                 opacity: 1;
                 transform: translateY(0);
                 .navbar-header__link{

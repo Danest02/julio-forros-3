@@ -24,10 +24,13 @@ class MySlider {
 		this.interval = parameters.interval;
 		this.semaphoreInterval;
 		this.loop = parameters.loop;
+		this.startPositionY;
+		this.currentPositionY;
+		this.y;
+		this.semaphore;
 	}
 	initialize() {
 		// TODO:ANCHOR --- ESCUCHADORES DE EVENTOS
-		console.log((this.currentIndex))
 		window.addEventListener(
 			"resize",
 			() => {
@@ -124,8 +127,7 @@ class MySlider {
 		if (typeof this.loop !== "undefined") {
 			this.funcitionLoop();
 		} else {
-			if(this.$mySliderNextbutton)
-			this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
+			if (this.$mySliderNextbutton) this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
 		}
 		// * STUB --- Interval
 		if (typeof this.interval !== "undefined") {
@@ -137,33 +139,46 @@ class MySlider {
 	touchStart(e) {
 		this.isDragging = true;
 		this.startPosition = this.getPositionX(e);
+		this.startPositionY = this.getPositionY(e);
 	}
 	touchMove(e) {
 		if (this.semaphoreInterval) {
 			this.semaphoreInterval = false;
 		}
 		if (this.isDragging) {
-			this.$mySliderSlides.style.cursor = "grabbing";
+			// this.$mySliderSlides.style.cursor = "grabbing";
 			this.currentPosition = this.getPositionX(e);
+			this.currentPositionY = this.getPositionY(e);
 			this.currentTranslate = this.prevTranslate + this.currentPosition - this.startPosition;
-			this.setSlidesPosition();
-			// this.animation();
+			if (Math.abs(this.startPositionY - this.currentPositionY) < 10) {
+				if (Math.abs(this.startPosition - this.currentPosition) > 10) {
+					this.semaphore = true;
+				}
+			}
+			console.log(this.semaphore);
+			if (this.semaphore) {
+				this.setSlidesPosition();
+			}
+			// // this.animation();
 		}
 	}
 	touchEnd() {
 		let movedBy, direction;
-		this.isDragging = false;
 		movedBy = this.currentTranslate - this.prevTranslate;
 		movedBy > 0 ? (direction = -1) : (direction = 1);
-		if (Math.abs(movedBy) > this.slideWidth * 2.5) {
-			this.currentIndex += 3 * direction;
-		} else if (Math.abs(movedBy) > this.slideWidth * 1.5) {
-			this.currentIndex += 2 * direction;
-		} else if (Math.abs(movedBy) > 50) {
-			this.currentIndex += 1 * direction;
+		if (this.semaphore) {
+			if (Math.abs(movedBy) > this.slideWidth * 2.5) {
+				this.currentIndex += 3 * direction;
+			} else if (Math.abs(movedBy) > this.slideWidth * 1.5) {
+				this.currentIndex += 2 * direction;
+			} else if (Math.abs(movedBy) > 50) {
+				this.currentIndex += 1 * direction;
+			}
+			this.setPositionByIndex();
 		}
-		this.setPositionByIndex();
-		this.$mySliderSlides.style.cursor = "grab";
+		this.isDragging = false;
+		this.semaphore = false;
+		// this.$mySliderSlides.style.cursor = "grab";
 	}
 
 	// TODO:ANCHOR --- ESTABLECER TRANSLACION DE $SLIDES
@@ -174,6 +189,9 @@ class MySlider {
 	// TODO:ANCHOR --- OBTENER POSICION DE X
 	getPositionX(e) {
 		return e.type.includes("mouse") ? e.pageX : e.touches[0].clientX;
+	}
+	getPositionY(e) {
+		return e.type.includes("mouse") ? e.pageY : e.touches[0].clientY;
 	}
 
 	// TODO:ANCHOR --- ANIMACION
@@ -187,20 +205,20 @@ class MySlider {
 	setPositionByIndex() {
 		// * STUB --- Bloquear el desplazamiento de los slide de los extremos
 		if (typeof this.loop == "undefined") {
-			let a
-			if (this.numberOfColumns == 1 && this.numberOfRows == 1){
-				a = Math.round(this.$mySliderSlidesArray.length -1)
-			}else if(this.numberOfColumns == 1 && this.numberOfRows == 3){
-				a = Math.round(this.$mySliderSlidesArray.length / this.numberOfRows)
-			}else if(this.numberOfColumns == 2 && this.numberOfRows == 1){
-				a = Math.round(this.$mySliderSlidesArray.length - this.numberOfColumns)
-			}else if(this.numberOfColumns == 2 && this.numberOfRows == 2){
-				a = Math.round(this.$mySliderSlidesArray.length / this.numberOfColumns -2)
-			}else if(this.numberOfColumns == 3 && this.numberOfRows == 2){
-				a = Math.ceil(this.$mySliderSlidesArray.length / this.numberOfColumns -1  )
+			let a;
+			if (this.numberOfColumns == 1 && this.numberOfRows == 1) {
+				a = Math.round(this.$mySliderSlidesArray.length - 1);
+			} else if (this.numberOfColumns == 1 && this.numberOfRows == 3) {
+				a = Math.round(this.$mySliderSlidesArray.length / this.numberOfRows);
+			} else if (this.numberOfColumns == 2 && this.numberOfRows == 1) {
+				a = Math.round(this.$mySliderSlidesArray.length - this.numberOfColumns);
+			} else if (this.numberOfColumns == 2 && this.numberOfRows == 2) {
+				a = Math.round(this.$mySliderSlidesArray.length / this.numberOfColumns - 2);
+			} else if (this.numberOfColumns == 3 && this.numberOfRows == 2) {
+				a = Math.ceil(this.$mySliderSlidesArray.length / this.numberOfColumns - 1);
 			}
-			if (this.currentIndex > a ) {
-				this.currentIndex = a ;
+			if (this.currentIndex > a) {
+				this.currentIndex = a;
 			} else if (this.currentIndex < 0) {
 				this.currentIndex = 0;
 			}
@@ -208,16 +226,15 @@ class MySlider {
 				this.$mySliderBackbutton.classList.add("my-slider__navegation-button--opacity-none");
 			} else {
 				this.$mySliderBackbutton.classList.remove("my-slider__navegation-button--opacity-none");
-			}	
+			}
 			if (this.currentIndex == a) {
 				this.$mySliderNextbutton.classList.add("my-slider__navegation-button--opacity-none");
 			} else {
 				this.$mySliderNextbutton.classList.remove("my-slider__navegation-button--opacity-none");
 			}
-	
 		}
 		// * STUB --- Ejecutar salto del slide infinito
-		if (this.currentIndex == this.$mySliderSlidesArray.length + 1 || this.currentIndex == 0 && typeof this.loop !== "undefined") {
+		if (this.currentIndex == this.$mySliderSlidesArray.length + 1 || (this.currentIndex == 0 && typeof this.loop !== "undefined")) {
 			setTimeout(() => {
 				this.jumpOfSlide();
 			}, 500);
@@ -226,7 +243,6 @@ class MySlider {
 		this.currentTranslate = this.currentIndex * -(this.slideWidth + this.gap);
 		this.prevTranslate = this.currentTranslate;
 		this.setSlidesPosition();
-
 	}
 
 	navegationButton() {
@@ -303,6 +319,5 @@ const sliderTop = new MySlider(".slider-header", {
 	loop: "active"
 });
 sliderTop.initialize();
-const sliderCatalogueIndex = new MySlider(".slider-catalogue-index", {
-});
+const sliderCatalogueIndex = new MySlider(".slider-catalogue-index", {});
 sliderCatalogueIndex.initialize();
